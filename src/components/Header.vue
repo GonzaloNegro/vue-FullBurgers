@@ -1,16 +1,27 @@
 <template>
     <div class="titulo">
-      <img class="" src="../assets/burger.png">
-      <h1>{{titulo}}</h1>
-      <img class="" src="../assets/espatula.png">
+        <div class="titulo-log">
+            <button-component :nombre="'Registrarse'" />
+            <button-component :nombre="'Login'" />
+        </div>
+        <div class="titulo-img">
+            <img class="" src="../assets/burger.png">
+            <h1>{{titulo}}</h1>
+            <img class="" src="../assets/espatula.png">
+        </div>
     </div>
 </template>
 
 <script>
+import Button from './UButton.vue';
+
     export default{
         name: 'header-component',
         props:{
             titulo: String,
+        },
+        components: {
+          'button-component': Button,
         },
     };
 </script>
@@ -20,10 +31,27 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: row;
+    flex-direction: column;
 
     background: rgb(0,0,0);
     background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(42,26,11,0.43461134453781514) 100%);
+}
+
+.titulo-img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.titulo-log{
+    width: 100%;
+    padding: 15px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: row;
+    gap: 5px;
 }
 
 .titulo img{

@@ -8,6 +8,7 @@
     :costo="burger.costo"
     :ingredientes="burger.ingredientes"
     class="cont-cards" >
+      <p>Inicia sesión para realizar una compra</p>
     </card-component>
   </div>
 </template>

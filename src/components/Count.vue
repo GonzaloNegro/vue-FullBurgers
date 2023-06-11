@@ -1,8 +1,10 @@
 <template>
     <div class="boton">
-        <button v-on:click="restando" value="Click" class="menos"><i class="fa-solid fa-minus fa-2x"></i></button>
-        <p>{{ numero }}</p>
-        <button v-on:click="sumando" value="Click" class="mas"><i class="fa-solid fa-plus fa-2x"></i></button>
+        <button class="menos" 
+            @click="handleClickLess" ><i class="fa-solid fa-minus fa-2x"></i></button>
+        <p>{{ contador }}</p>
+        <button class="mas" 
+            @click="handleClick" ><i class="fa-solid fa-plus fa-2x"></i></button>
     </div>
 </template>
 
@@ -10,24 +12,16 @@
     export default{
         name: 'card-count',
         props:{
+            contador: Number,
         },
-        data(){
-        return{
-            numero : 0,
-        }
-    },
         methods: {
-        sumando(){
-            this.numero ++
-        },
-        restando(){
-            if(this.numero == 0){
-                alert("No puede seguir restando.")
-            }else{
-                this.numero --
+            handleClick(){
+                this.$emit("contar")
+            },
+            handleClickLess(){
+                this.$emit("contarLess")
             }
         }
-    }
     }
 </script>
 

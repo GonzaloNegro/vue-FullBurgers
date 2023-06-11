@@ -16,8 +16,9 @@
           <td>{{calorias}}Kcal</td>
         </tr>
       </table>
-      <p class="infor">Precio: $ {{ costo }}</p>
-      <card-count/>
+      <p class="infor">Precio: {{ costo | price("$")}}</p>
+      <slot></slot>
+      <card-count @contar="buttonClickIncrease" @contarLess="buttonClickDecrease"  :contador="contador" />
   </div>
 </template>
 
@@ -29,6 +30,17 @@ import Count from './Count.vue';
         components: {
           'card-count': Count
         },
+        data(){
+          return{
+            contador : 0,
+          }
+        },
+        filters: {
+          price(value, currency){
+            if(typeof value !== 'number') return value
+            return `${currency}${value.toFixed(2)}`
+          }
+        },
         props:{
             titulo: String,
             portada: String,
@@ -37,6 +49,18 @@ import Count from './Count.vue';
             costo: Number,
             ingredientes: String
         },
+        methods:{
+          buttonClickIncrease(){
+            this.contador ++
+        },
+        buttonClickDecrease(){
+            if(this.contador == 0){
+                alert("No puede seguir restando.")
+            }else{
+                this.contador --
+            }
+        }
+        }
     };
 </script>
 
