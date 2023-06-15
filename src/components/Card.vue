@@ -18,8 +18,8 @@
       <!-- <p class="infor">Precio: {{ costo | price("$")}}</p> -->
       <p class="infor">Precio: ${{ costo }}</p>
       <slot></slot>
-      <card-count @contar="buttonClickIncrease" @contarLess="buttonClickDecrease"  :contador="contador" />
-      <button class="btn btn-warning">Agregar al carrito</button>
+      <!-- <card-count @contar="buttonClickIncrease" @contarLess="buttonClickDecrease"  :contador="contador" /> -->
+      <!-- <button class="btn btn-warning" @click="addtoCart">Agregar al carrito</button> -->
   </div>
 </template>
 
@@ -34,14 +34,9 @@ import Count from './Count.vue';
         data(){
           return{
             contador : 0,
+            cart: [],
           }
         },
-/*         filters: {
-          price(value, currency){
-            if(typeof value !== 'number') return value
-            return `${currency}${value.toFixed(2)}`
-          }
-        }, */
         props:{
             titulo: String,
             portada: String,
@@ -60,9 +55,12 @@ import Count from './Count.vue';
             }else{
                 this.contador --
             }
-        }
         },
-        
+/*           addtoCart(){
+            this.cart.push("Hola2");
+            console.log(this.cart[0])
+          } */
+        },
     };
 </script>
 

@@ -12,6 +12,7 @@
         :costo="burger.costo"
         class="cont-cards" >
         <p>Inicia sesión para realizar una compra</p>
+        <button class="btn btn-warning" @click="addtoCart">Agregar al carrito</button>
       </card-component>
     </div>
   </div>
@@ -19,7 +20,6 @@
 
 <script>
 import Card from './Card.vue';
-
     export default{
         name: 'main-component',
         components: {
@@ -31,7 +31,13 @@ import Card from './Card.vue';
         },
         data(){
           return{
-            
+            cart: [],
+          }
+        },
+        methods:{
+          addtoCart(){
+            this.cart.push(this.burgers);
+            console.log(this.cart)
           }
         }
     };

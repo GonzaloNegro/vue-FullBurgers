@@ -15,9 +15,9 @@
                     <input type="password" id="password">
                 </div>
                 <div>
-                    <button type="submit" class="btn btn-warning">{{button}}</button>
                 </div>
             </form>
+            <button type="submit" class="btn btn-warning" @click="addUser">{{button}}</button>
         </div>
     </div>
 </template>
@@ -32,6 +32,19 @@
         },
         components:{
         },
+        data(){
+          return{
+            user: [],
+          }
+        },
+        methods:{
+          addUser(){
+            const username = document.querySelector('#username').value;
+            const password = document.querySelector('#password').value;
+            this.user.push({name: username, pass: password});
+            console.log(this.user)
+          }
+        }
     };
 </script>
 
