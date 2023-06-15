@@ -1,9 +1,5 @@
 <template>
     <div class="titulo">
-        <div class="titulo-log">
-            <button-component :nombre="'Registrarse'" />
-            <button-component :nombre="'Login'" />
-        </div>
         <div class="titulo-img">
             <img class="" src="../assets/burger.png">
             <h1>{{titulo}}</h1>
@@ -28,6 +24,7 @@ import Button from './UButton.vue';
 
 <style scoped>
 .titulo{
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -44,15 +41,6 @@ import Button from './UButton.vue';
     flex-direction: row;
 }
 
-.titulo-log{
-    width: 100%;
-    padding: 15px;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    flex-direction: row;
-    gap: 5px;
-}
 
 .titulo img{
     width: 100px;

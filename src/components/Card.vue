@@ -2,7 +2,6 @@
   <div class="card">
     <div class="img-bur">
       <img class="" :src="portada" :title="titulo">
-      <!-- <div class="texto-encima">{{ingredientes}}</div> -->
     </div>
       <br><br>
       <p class="tittle">{{ titulo }}</p>
@@ -16,9 +15,11 @@
           <td>{{calorias}}Kcal</td>
         </tr>
       </table>
-      <p class="infor">Precio: {{ costo | price("$")}}</p>
+      <!-- <p class="infor">Precio: {{ costo | price("$")}}</p> -->
+      <p class="infor">Precio: ${{ costo }}</p>
       <slot></slot>
       <card-count @contar="buttonClickIncrease" @contarLess="buttonClickDecrease"  :contador="contador" />
+      <button class="btn btn-warning">Agregar al carrito</button>
   </div>
 </template>
 
@@ -35,12 +36,12 @@ import Count from './Count.vue';
             contador : 0,
           }
         },
-        filters: {
+/*         filters: {
           price(value, currency){
             if(typeof value !== 'number') return value
             return `${currency}${value.toFixed(2)}`
           }
-        },
+        }, */
         props:{
             titulo: String,
             portada: String,
@@ -60,7 +61,8 @@ import Count from './Count.vue';
                 this.contador --
             }
         }
-        }
+        },
+        
     };
 </script>
 
@@ -133,5 +135,10 @@ td{
     font-size: 1.5rem;
     display: flex;
     justify-content: flex-start;
+}
+
+button{
+  padding: 5px;
+  margin-top: 15px;
 }
 </style>
